@@ -1303,4 +1303,80 @@ button{
   .project-card-row .project-meta{
     gap:12px;
   }
+
+
+
+
+
+
+/* Contact & Social Section Styles */
+.contact-social-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding: 40px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-group, 
+.social-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #888888;
+  font-weight: 600;
+}
+
+.contact-link {
+  color: #111111;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+/* Hover effects for a premium interactive feel */
+.contact-link:hover {
+  opacity: 0.7;
+}
+
+.social-links-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Custom highlight color for WhatsApp */
+.contact-link.whatsapp-link {
+  color: #075E54;
+  font-weight: 600;
+}
+
+.contact-link.whatsapp-link:hover {
+  color: #128C7E;
+  opacity: 1;
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 600px) {
+  .contact-social-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+
+
+
+
+
+  
 }
