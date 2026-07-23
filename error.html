@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Error | Jafar Sadhiq</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;900&display=swap" rel="stylesheet">
+<style>
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		font-family: 'Roboto', system-ui, sans-serif;
+		min-height: 100vh;
+		display: grid;
+		place-items: center;
+		background: #fafaf7;
+		color: #111;
+		text-align: center;
+		padding: 24px;
+	}
+	main { max-width: 560px; }
+	.wordmark { display: inline-block; margin-bottom: 28px; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; color: #111; text-decoration: none; }
+	.wordmark span { color: #d8924c; }
+	.code {
+		font-size: clamp(6rem, 22vw, 11rem);
+		font-weight: 900;
+		line-height: 1;
+		letter-spacing: -0.04em;
+		background: linear-gradient(180deg, #111 60%, #efce4a 140%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	.rule { width: 56px; height: 3px; border-radius: 2px; background: #efce4a; margin: 22px auto; }
+	h1 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 600; margin-bottom: 10px; }
+	p { color: #7a7a7a; font-size: 15px; line-height: 1.7; margin-bottom: 30px; }
+	.btn {
+		display: inline-block;
+		background: #111;
+		color: #fff;
+		text-decoration: none;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: .12em;
+		text-transform: uppercase;
+		padding: 14px 30px;
+		border-radius: 999px;
+		transition: all .3s ease;
+	}
+	.btn:hover { background: #000; color: #efce4a; transform: translateY(-1px); }
+</style>
+</head>
+<body>
+<main>
+	<a class="wordmark" href="./">Jafar <span>Sadhiq</span></a>
+	<div class="code" id="code">Oops</div>
+	<div class="rule"></div>
+	<h1 id="title">Something went wrong</h1>
+	<p id="msg">An unexpected error occurred. Please try again.</p>
+	<a class="btn" href="./">Back to Home</a>
+</main>
+<script>
+	// /error.html?code=405 → shows that status. Unknown/absent code → generic.
+	var ERRORS = {
+		400: ['Bad request', 'Something was wrong with that request. Please go back and try again.'],
+		401: ['Not signed in', 'You need to sign in to view this page.'],
+		403: ['Access denied', 'You don’t have permission to view this page.'],
+		404: ['Page not found', 'This page doesn’t exist — it may have been moved, or the link is broken.'],
+		405: ['Method not allowed', 'That action isn’t allowed here. Please go back and try again.'],
+		408: ['Request timeout', 'The request took too long. Check your connection and try again.'],
+		410: ['Page removed', 'This page has been permanently removed.'],
+		429: ['Too many requests', 'Slow down a little — please wait a moment and try again.'],
+		500: ['Server error', 'Something broke on our side. Please try again in a minute.'],
+		502: ['Bad gateway', 'We couldn’t reach the server. Please try again shortly.'],
+		503: ['Service unavailable', 'We’re briefly down for maintenance. Please try again soon.']
+	};
+	var code = new URLSearchParams(location.search).get('code');
+	if (ERRORS[code]) {
+		document.getElementById('code').textContent = code;
+		document.getElementById('title').textContent = ERRORS[code][0];
+		document.getElementById('msg').textContent = ERRORS[code][1];
+		document.title = code + ' — ' + ERRORS[code][0] + ' | Jafar Sadhiq';
+	}
+</script>
+</body>
+</html>
